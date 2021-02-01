@@ -5,25 +5,29 @@ import { songRepository } from '../models/songs';
 
 const router = Router();
 
-router.post('/songs', [
-	body('title'),
-	body('artist'),
-	body('album'),
-	body('year').isInt(),
-	body('id')
-		.not()
-		.exists()
-		.withMessage(
-			'No es necesario que proporcione un ID; este se asignará automáticamente'
-		)
-]);
+router.post(
+	'/',
+	[
+		body('title'),
+		body('artist'),
+		body('album'),
+		body('year').isInt(),
+		body('id')
+			.not()
+			.exists()
+			.withMessage(
+				'No es necesario que proporcione un ID; este se asignará automáticamente'
+			)
+	],
+	SongController.nuevaCancion
+);
 
-router.get('/songs', SongController.todasLasCanciones);
+router.get('/', SongController.todasLasCanciones);
 
-router.get('/songs/:id', SongController.cancionPorId);
+router.get('/:id', SongController.cancionPorId);
 
-router.put('/song', SongController.editarCancion);
+router.put('/:id', SongController.editarCancion);
 
-router.delete('/songs/:id', SongController.eliminarCancion);
+router.delete('/:id', SongController.eliminarCancion);
 
 export default router;

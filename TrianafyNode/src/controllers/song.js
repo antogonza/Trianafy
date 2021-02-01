@@ -6,7 +6,7 @@ const SongController = {
 	todasLasCanciones: async (req, res) => {
 		const data = await songRepository.findAll();
 		if (Array.isArray(data) && data.length > 0) res.json(data);
-		else res.sendStatus(404);
+		else res.sendStatus(400);
 	},
 
 	cancionPorId: async (req, res) => {

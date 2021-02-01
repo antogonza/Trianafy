@@ -31,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/users', routes.user);
+app.use('/songs', routes.song);
 app.use('/auth', routes.auth);
 
 mongoose.connect(
@@ -46,14 +47,12 @@ mongoose.connect(
 				`Conexión correcta a la base de datos en la URI ${process.env.DB_URI}`
 			);
 			app.listen(process.env.PORT, () =>
-				console.log(
-					`¡Aplicación de ejemplo escuchando en el puerto ${process.env.PORT}!`
-				)
+				console.log(`¡Trianafy en el puerto ${process.env.PORT}!`)
 			);
 		}
 	}
 );
 
-app.get('/', (req, res) => {
+app.get('/song', (req, res) => {
 	return res.send('Recibió un método GET');
 });

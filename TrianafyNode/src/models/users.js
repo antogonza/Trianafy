@@ -18,7 +18,7 @@ const emailExists = async email => {
 };
 
 const usernameExists = async username => {
-	const result = await User.countDocuments({ username: username }).exec;
+	const result = await User.countDocuments({ username: username }).exec();
 	return result > 0;
 };
 
