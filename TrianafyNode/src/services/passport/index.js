@@ -5,57 +5,57 @@ import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { User, userRepository } from '../../models/users';
 import bcrypt from 'bcryptjs';
 
-
 /**
  * Estrategia de autenticación local (con username y password)
  */
-passport.use(new LocalStrategy({
-    usernameField: "username",
-    passwordField: "password",
-    session: false
-},(username, password, done)=> {
-    const user = userRepository.findByUsername(username);
-    if (user == undefined)
-        return done(null, false); // El usuario no existe
-    else if (!bcrypt.compareSync(password, user.password))
-        return done(null, false); // No coincide la contraseña
-    else
-        return done(null, user.toDto());
-
-}));
-
+passport.use(
+	new LocalStrategy(
+		{
+			usernameField: 'username',
+			passwordField: 'password',
+			session: false
+		},
+		(username, password, done) => {
+			const user = userRepository.findByUsername(username);
+			if (user == undefined) return done(null, false);
+			// El usuario no existe
+			else if (!bcrypt.compareSync(password, user.password))
+				return done(null, false);
+			// No coincide la contraseña
+			else return done(null, user.toDto());
+		}
+	)
+);
 
 /**
  * Estrategia de autenticación basada en Token
  */
 const opts = {
-    jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey : process.env.JWT_SECRET,
-    algorithms : [process.env.JWT_ALGORITHM]
+	jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+	secretOrKey: process.env.JWT_SECRET,
+	algorithms: [process.env.JWT_ALGORITHM]
 };
 
-passport.use('token', new JwtStrategy(opts, (jwt_payload, done)=>{
+passport.use(
+	'token',
+	new JwtStrategy(opts, (jwt_payload, done) => {
+		// Extraemos el id del campo sub del payload
+		const user_id = jwt_payload.sub;
 
-    // Extraemos el id del campo sub del payload
-    const user_id = jwt_payload.sub;
-
-    // Buscamos el usuario por ID
-    const user = userRepository.findById(user_id);
-    if (user == undefined)
-        return done(null, false); // No existe el usuario
-    else
-        return done(null, user);
-
-}));
+		// Buscamos el usuario por ID
+		const user = userRepository.findById(user_id);
+		if (user == undefined) return done(null, false);
+		// No existe el usuario
+		else return done(null, user);
+	})
+);
 
 export const password = () => (req, res, next) =>
-    passport.authenticate('local', {session: false}, (err, user, info) => {
-        if (err)
-            return res.status(400).json(err)
-        else if (err || !user)
-            return res.status(401).end()
-        
-        /*
+	passport.authenticate('local', { session: false }, (err, user, info) => {
+		if (err) return res.status(400).json(err);
+		else if (err || !user) return res.status(401).end();
+
+		/*
 
         En este ejemplo usamos a authenticate() de forma que le da acceso 
         a los objetos req, res y next mediante el cierre (ver apuntes de Javascript)
@@ -80,23 +80,21 @@ export const password = () => (req, res, next) =>
         Más información en http://www.passportjs.org/docs/authenticate/
         */
 
-        req.logIn(user, { session: false }, (err) => {
-            if (err) return res.status(401).end()
-            next()
-        })
-    })(req, res, next);
-
+		req.logIn(user, { session: false }, err => {
+			if (err) return res.status(401).end();
+			next();
+		});
+	})(req, res, next);
 
 export const token = () => (req, res, next) =>
-    passport.authenticate('token', { session: false }, (err, user, info) => {
-    if (err ||  !user) {
-        return res.status(401).end()
-    }
-    req.logIn(user, { session: false }, (err) => {
-        if (err) return res.status(401).end()
-        next()
-    })
-})(req, res, next);
-
+	passport.authenticate('token', { session: false }, (err, user, info) => {
+		if (err || !user) {
+			return res.status(401).end();
+		}
+		req.logIn(user, { session: false }, err => {
+			if (err) return res.status(401).end();
+			next();
+		});
+	})(req, res, next);
 
 export default passport;

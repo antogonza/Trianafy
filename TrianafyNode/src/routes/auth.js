@@ -54,13 +54,13 @@ router.post(
 		// })
 		body('password')
 			.isLength({ min: 8 })
-			.withMessage('La contraseña debe tener como mínimo 8 caracteres'),
-		body('id')
-			.not()
-			.exists()
-			.withMessage(
-				'No es necesario que proporcione un ID; este se asignará automáticamente'
-			)
+			.withMessage('La contraseña debe tener como mínimo 8 caracteres')
+		// body('id')
+		// 	.not()
+		// 	.exists()
+		// 	.withMessage(
+		// 		'No es necesario que proporcione un ID; este se asignará automáticamente'
+		// 	)
 	],
 	validar,
 	AuthController.register
