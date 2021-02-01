@@ -30,4 +30,10 @@ router.put('/:id', ListController.editarLista);
 
 router.delete('/:id', ListController.eliminarLista);
 
+router.get('/:id/songs', ListController.obtenerCancionesDeLista);
+
+router.post('/:idLista/songs/:idCancion', ListController.addCancionALista);
+
+router.get('/:idLista/songs/:idCancion', ListController.obtenerCancionDeLista);
+
 export default router;

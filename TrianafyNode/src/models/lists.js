@@ -1,15 +1,16 @@
 import mongoose from 'mongoose';
+import { Song } from './songs';
 const { Schema } = mongoose;
 
 const listSchema = new Schema({
 	name: String,
 	description: String,
 	userId: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.ObjectId,
 		ref: 'User'
 	},
 	songs: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.ObjectId,
 		ref: 'Song'
 	}
 });
@@ -19,7 +20,9 @@ const List = mongoose.model('List', listSchema);
 const listRepository = {
 	async findAll() {
 		const result = await List.find({ userId: userId })
-		.exec();
+			.populate('User', '_id')
+			.populate('songs')
+			.exec();
 		return result;
 	},
 	async findById(id) {
@@ -48,6 +51,36 @@ const listRepository = {
 	},
 	async delete(id) {
 		await List.findByIdAndRemove(id).exec();
+	},
+
+	async getSongsFromList(id) {
+		const result = await List.findOne({ id: id }).populate('songs').exec();
+		if (result != null) {
+			return result;
+		} else return undefined;
+	},
+
+	async addSongsToList(idList, idSong) {
+		const list = await List.findOne({ id: idList }).populate('songs').exec();
+		const song = await Song.findById(id);
+
+		if (list != null && song != null) {
+			list.songs.push(song);
+			await list.save();
+			return list;
+		}
+	},
+
+	async getSongFromList(idList, idSong) {
+		const list = await List.findOne({ id: idList })
+			.populate({
+				path: 'songs',
+				match: { id: idSong }
+			})
+			.exec();
+		if (list != null && list.songs.length > 0) {
+			return list.songs[0];
+		}
 	}
 };
 

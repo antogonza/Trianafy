@@ -47,6 +47,33 @@ const ListController = {
 		} else {
 			res.sendStatus(404);
 		}
+	},
+
+	obtenerCancionesDeLista: async (req, res) => {
+		let canciones = await listRepository.getSongFromList(req.params.id);
+		if (canciones != null) {
+			res.json(canciones);
+		} else res.status(404);
+	},
+
+	addCancionALista: async (req, res) => {
+		let cancion = await listRepository.addSongsToList(
+			req.params.id,
+			req.params.idCancion
+		);
+		if (cancion != null) {
+			res.json(cancion);
+		} else res.status(404);
+	},
+
+	obtenerCancionDeLista: async (req, res) => {
+		let cancion = await listRepository.getSongFromList(
+			req.params.id,
+			req.params.idCancion
+		);
+		if (cancion != null) {
+			res.json(cancion);
+		} else res.status(404);
 	}
 };
 
