@@ -32,7 +32,7 @@ const SongController = {
 		let cancionModificada = await songRepository.updateById(req.params.id, {
 			title: req.body.title,
 			artist: req.body.artist,
-			album: req.body.albyum,
+			album: req.body.album,
 			year: req.body.year
 		});
 		if (cancionModificada == undefined) res.sendStatus(404);

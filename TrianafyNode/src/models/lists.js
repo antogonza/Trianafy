@@ -14,15 +14,19 @@ const listSchema = new Schema({
 	}
 });
 
-const List = mongoose.model('List', songSchema);
+const List = mongoose.model('List', listSchema);
 
 const listRepository = {
 	async findAll() {
-		const result = await List.find({}).exec();
+		const result = await List.find({ userId: userId })
+		.exec();
 		return result;
 	},
 	async findById(id) {
-		const result = await List.findById(id).exec();
+		const result = await List.findById(id)
+			.populate('User', '_id')
+			.populate('songs')
+			.exec();
 		return result != null ? result : undefined;
 	},
 	async create(newList) {
@@ -33,7 +37,7 @@ const listRepository = {
 			songs: newList.songs
 		});
 		const result = await theList.save();
-		return result; // Posiblemente aquí nos interese implementar un DTO
+		return result;
 	},
 	async updateById(id, modifiedList) {
 		const listSaved = await List.findById(id);

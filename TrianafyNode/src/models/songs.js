@@ -27,7 +27,7 @@ const songRepository = {
 			year: newSong.year
 		});
 		const result = await theSong.save();
-		return result; // Posiblemente aquí nos interese implementar un DTO
+		return result;
 	},
 	async updateById(id, modifiedSong) {
 		const songSaved = await Song.findById(id);
