@@ -4,15 +4,19 @@ import bcrypt from 'bcryptjs';
 import { JwtService } from '../services/jwt';
 
 const AuthController = {
-	register: (req, res, next) => {
-		let usuarioCreado = userRepository.create(
-			new User(
-				req.body.fullname,
-				req.body.username,
-				req.body.email,
-				bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS))
+	register: async (req, res, next) => {
+		console.log('asdfa');
+		let usuarioCreado = await userRepository.create({
+			fullname: req.body.fullname,
+			username: req.body.username,
+			email: req.body.email,
+			password: bcrypt.hashSync(
+				req.body.password,
+				parseInt(process.env.BCRYPT_ROUNDS)
 			)
-		);
+		});
+
+		console.log(usuarioCreado);
 
 		res.status(201).json({
 			id: usuarioCreado.id,

@@ -4,9 +4,7 @@
 	"description": "Proyecto de desarrollo de una API REST con Node, Express, MongoDB y Mongoose",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon --exec babel-node src/index.js",
-		"debug": "nodemon --exec 'babel-node --inspect-brk src/index.js'",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "nodemon --exec babel-node src/index.js"
 	},
 	"keywords": [],
 	"author": "",

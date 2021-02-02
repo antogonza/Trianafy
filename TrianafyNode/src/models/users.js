@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
+import { json } from 'express';
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -24,6 +25,8 @@ const usernameExists = async username => {
 
 const userRepository = {
 	async create(newUser) {
+		let user = JSON.stringify(newUser);
+		console.log('usuario: ' + user);
 		const theUser = new User({
 			fullname: newUser.fullname,
 			username: newUser.username,
@@ -31,6 +34,7 @@ const userRepository = {
 			password: newUser.password
 		});
 		const result = await theUser.save();
+		console.log(result);
 		return result;
 	}
 };
