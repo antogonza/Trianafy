@@ -33,26 +33,26 @@ router.post(
 		body('fullname'),
 		body('username')
 			.isLength({ min: 5 })
-			.withMessage('La longitud mínima del nombre de usuario son 5 caracteres'),
-		// .custom(username => {
-		// 	if (usernameExists(username)) {
-		// 		throw new Error(
-		// 			'El nombre de usuario ya existe. Escoja otro diferente'
-		// 		);
-		// 	} else return true;
-		// }),
+			.withMessage('La longitud mínima del nombre de usuario son 5 caracteres')
+			.custom(async username => {
+				if (await usernameExists(username)) {
+					throw new Error(
+						'El nombre de usuario ya existe. Escoja otro diferente'
+					);
+				} else return true;
+			}),
 		body('email')
 			.isEmail()
-			.withMessage('El campo email debe ser un email válido'),
-		// .custom(email => {
-		// 	if (emailExists(email)) {
-		// 		throw new Error(
-		// 			'El email ya está registrado. Proporcione un valor diferente'
-		// 		);
-		// 	} else {
-		// 		return true;
-		// 	}
-		// }),
+			.withMessage('El campo email debe ser un email válido')
+			.custom(async email => {
+				if (await emailExists(email)) {
+					throw new Error(
+						'El email ya está registrado. Proporcione un valor diferente'
+					);
+				} else {
+					return true;
+				}
+			}),
 		body('password')
 			.isLength({ min: 8 })
 			.withMessage('La contraseña debe tener como mínimo 8 caracteres'),
