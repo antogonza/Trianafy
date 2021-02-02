@@ -31,18 +31,19 @@ router.post(
 	'/register',
 	[
 		body('fullname'),
-		body('username'),
-		// .isLength({ min: 5 })
-		// .withMessage('La longitud mínima del nombre de usuario son 5 caracteres')
+		body('username')
+			.isLength({ min: 5 })
+			.withMessage('La longitud mínima del nombre de usuario son 5 caracteres'),
 		// .custom(username => {
 		// 	if (usernameExists(username)) {
 		// 		throw new Error(
 		// 			'El nombre de usuario ya existe. Escoja otro diferente'
 		// 		);
 		// 	} else return true;
-		// })
-		body('email').isEmail(),
-		// .withMessage('El campo email debe ser un email válido')
+		// }),
+		body('email')
+			.isEmail()
+			.withMessage('El campo email debe ser un email válido'),
 		// .custom(email => {
 		// 	if (emailExists(email)) {
 		// 		throw new Error(
@@ -51,16 +52,16 @@ router.post(
 		// 	} else {
 		// 		return true;
 		// 	}
-		// })
+		// }),
 		body('password')
 			.isLength({ min: 8 })
-			.withMessage('La contraseña debe tener como mínimo 8 caracteres')
-		// body('id')
-		// 	.not()
-		// 	.exists()
-		// 	.withMessage(
-		// 		'No es necesario que proporcione un ID; este se asignará automáticamente'
-		// 	)
+			.withMessage('La contraseña debe tener como mínimo 8 caracteres'),
+		body('id')
+			.not()
+			.exists()
+			.withMessage(
+				'No es necesario que proporcione un ID; este se asignará automáticamente'
+			)
 	],
 	validar,
 	AuthController.register

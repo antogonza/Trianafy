@@ -5,7 +5,6 @@ import { JwtService } from '../services/jwt';
 
 const AuthController = {
 	register: async (req, res, next) => {
-		console.log('asdfa');
 		let usuarioCreado = await userRepository.create({
 			fullname: req.body.fullname,
 			username: req.body.username,
@@ -24,9 +23,10 @@ const AuthController = {
 			email: usuarioCreado.email
 		});
 	},
-	login: (req, res, next) => {
+
+	login: async (req, res, next) => {
 		const token = JwtService.sign(req.user);
-		res.status(201).json({
+		await res.status(201).json({
 			user: req.user,
 			token: token
 		});
