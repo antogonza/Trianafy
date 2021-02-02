@@ -1,0 +1,106 @@
+[{
+  "_id": {
+    "$oid": "6019845decef2c3efc2e006d"
+  },
+  "title": "Rap Bruto",
+  "album": "Almanauta",
+  "year": 2018
+},{
+  "_id": {
+    "$oid": "601984c6ecef2c3efc2e006e"
+  },
+  "title": "Los Años Luz",
+  "album": "Un Día en Suburbia",
+  "year": 2008
+},{
+  "_id": {
+    "$oid": "601984dfecef2c3efc2e006f"
+  },
+  "title": "Efectos Vocales",
+  "album": "Un Día en Suburbia",
+  "year": 2008
+},{
+  "_id": {
+    "$oid": "601984e8ecef2c3efc2e0070"
+  },
+  "title": "Nada Ni Nadie",
+  "album": "Un Día en Suburbia",
+  "year": 2008
+},{
+  "_id": {
+    "$oid": "601984eeecef2c3efc2e0071"
+  },
+  "title": "Mil Vidas",
+  "album": "Un Día en Suburbia",
+  "year": 2008
+},{
+  "_id": {
+    "$oid": "60198531ecef2c3efc2e0073"
+  },
+  "title": "Viviendo",
+  "album": "A Través de Mí",
+  "year": 2015
+},{
+  "_id": {
+    "$oid": "60198541ecef2c3efc2e0074"
+  },
+  "title": "Tal Como Eres",
+  "album": "A Través de Mí",
+  "year": 2015
+},{
+  "_id": {
+    "$oid": "6019854decef2c3efc2e0075"
+  },
+  "title": "Ahora",
+  "album": "A Través de Mí",
+  "year": 2015
+},{
+  "_id": {
+    "$oid": "60198556ecef2c3efc2e0076"
+  },
+  "title": "Urbanología",
+  "album": "A Través de Mí",
+  "year": 2015
+},{
+  "_id": {
+    "$oid": "6019855eecef2c3efc2e0077"
+  },
+  "title": "Leyenda",
+  "album": "A Través de Mí",
+  "year": 2015
+},{
+  "_id": {
+    "$oid": "60198588ecef2c3efc2e0078"
+  },
+  "title": "Manos Llenas",
+  "album": "Quiebro",
+  "year": 2020
+},{
+  "_id": {
+    "$oid": "601985b0ecef2c3efc2e0079"
+  },
+  "title": "El Cuenta Cuentos",
+  "album": "Poesía Difusa",
+  "year": 2003
+},{
+  "_id": {
+    "$oid": "601985baecef2c3efc2e007a"
+  },
+  "title": "El Regreso",
+  "album": "Poesía Difusa",
+  "year": 2003
+},{
+  "_id": {
+    "$oid": "601985dbecef2c3efc2e007b"
+  },
+  "title": "El Idioma De Los Dioses",
+  "album": "Mejor que el Silencio",
+  "year": 2011
+},{
+  "_id": {
+    "$oid": "6019860eecef2c3efc2e007c"
+  },
+  "title": "Ayer y Hoy",
+  "album": "Mejor que el Silencio",
+  "year": 2012
+}]

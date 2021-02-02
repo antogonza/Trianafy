@@ -14,7 +14,8 @@ const listSchema = new Schema({
 			type: mongoose.ObjectId,
 			ref: 'Song'
 		}
-	]
+	],
+	versionKey: false
 });
 
 const List = mongoose.model('List', listSchema);

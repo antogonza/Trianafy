@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "601986d1ecef2c3efc2e007f"
+  },
+  "songs": [
+    {
+      "$oid": "6019845decef2c3efc2e006d"
+    }
+  ],
+  "name": "Lista 1",
+  "description": "Lista de Reproducción Número 1"
+},{
+  "_id": {
+    "$oid": "6019871fecef2c3efc2e0080"
+  },
+  "songs": [],
+  "name": "Lista 2",
+  "description": "Lista de Reproducción Número 2"
+}]

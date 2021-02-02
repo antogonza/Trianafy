@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import { SongController } from '../controllers/song';
 import { param, body } from 'express-validator';
-import { songRepository } from '../models/songs';
+import { token } from '../services/passport';
 
 const router = Router();
 
 router.post(
 	'/',
 	[
-		body('title'),
+		(body('title'),
 		body('artist'),
 		body('album'),
 		body('year').isInt(),
@@ -17,7 +17,7 @@ router.post(
 			.exists()
 			.withMessage(
 				'No es necesario que proporcione un ID; este se asignará automáticamente'
-			)
+			))
 	],
 	SongController.nuevaCancion
 );

@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "6019868aecef2c3efc2e007d"
+  },
+  "fullname": "Luis Miguel",
+  "username": "lmlopez",
+  "email": "luismi@salesianos.com",
+  "password": "$2a$12$obOrfpaVWoKR856K6uOQhOdcE2DG9xN53m6YhQ7usHy6cLvfp8cYy"
+},{
+  "_id": {
+    "$oid": "60198698ecef2c3efc2e007e"
+  },
+  "fullname": "Antonio González",
+  "username": "antogonza",
+  "email": "antonio@salesianos.com",
+  "password": "$2a$12$Lq6dQV2Ewks89zniR58lsODPs8ZsFEO2u1J3WYcbMSFr/WzTbgFs."
+}]
