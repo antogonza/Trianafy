@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "0a359a88-5087-4bcd-ad29-34cadac4b5c3",
+		"name": "Trianafy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Canciones",
+			"item": [
+				{
+					"name": "TodasLasCanciones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/songs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"songs"
+							]
+						},
+						"description": "Trae todas las canciones de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "CancionPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/songs/601985dbecef2c3efc2e007b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"songs",
+								"601985dbecef2c3efc2e007b"
+							]
+						},
+						"description": "Trae una canción por una ID"
+					},
+					"response": []
+				},
+				{
+					"name": "CrearCanción",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Ni Estabas Ni Estarás\",\r\n    \"author\": \"Nach\",\r\n    \"album\": \"Mejor que el Silencio\",\r\n    \"year\": 2011\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/songs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"songs"
+							]
+						},
+						"description": "Añade una canción a la base de datos\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "EditarCancion ",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Ayer y Hoy\",\r\n    \"author\": \"Nach\",\r\n    \"album\": \"Mejor que el Silencio\",\r\n    \"year\": 2011\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/songs/6019860eecef2c3efc2e007c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"songs",
+								"6019860eecef2c3efc2e007c"
+							]
+						},
+						"description": "Edita una canción por el ID"
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarCancionPorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/songs/601985baecef2c3efc2e007a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"songs",
+								"601985baecef2c3efc2e007a"
+							]
+						},
+						"description": "Elimina una canción por su ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seguridad",
+			"item": [
+				{
+					"name": "Registro de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"fullname\": \"Usuario\",\r\n    \"username\": \"usuario\",\r\n    \"email\": \"usuario@salesianos.com\",\r\n    \"password\": \"12345678\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginDeUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"lmlopez\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login de un usuario registrado"
+					},
+					"response": []
+				}
+			],
+			"description": "Peticiones relacionadas con la seguridad. En estas peticiones se realiza tanto el registro como el inicio de sesión del usuario."
+		},
+		{
+			"name": "ListasDeReproducción",
+			"item": [
+				{
+					"name": "CrudListas",
+					"item": [
+						{
+							"name": "CrearLista",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Lista 3\",\r\n    \"description\":\"Lista de Reproducción Número 3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"list"
+									]
+								},
+								"description": "Crea una lista de canciones"
+							},
+							"response": []
+						},
+						{
+							"name": "TodasLasListas",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"list"
+									]
+								},
+								"description": "Obtiene todas las listas"
+							},
+							"response": []
+						},
+						{
+							"name": "ListaPorId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/list/601986d1ecef2c3efc2e007f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"list",
+										"601986d1ecef2c3efc2e007f"
+									]
+								},
+								"description": "Obtiene una lista según su id"
+							},
+							"response": []
+						},
+						{
+							"name": "EditarLista",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Lista1ConOtroNombre\",\r\n    \"description\":\"Lista de Reproducción Número 1 con otra descripción\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/list/601986d1ecef2c3efc2e007f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"list",
+										"601986d1ecef2c3efc2e007f"
+									]
+								},
+								"description": "Edita una lista"
+							},
+							"response": []
+						},
+						{
+							"name": "EliminarListaPorId",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/list/6019871fecef2c3efc2e0080",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"list",
+										"6019871fecef2c3efc2e0080"
+									]
+								},
+								"description": "Elimina una lista según su id"
+							},
+							"response": []
+						}
+					],
+					"description": "Operaciones de crear una lista, obtener todas las listas, obtener una lista en base a su id, modificar una lista y eliminar una lista"
+				},
+				{
+					"name": "CancionesDeLaLista",
+					"item": [
+						{
+							"name": "AgregarCancionALista",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/list/601986d1ecef2c3efc2e007f/songs/6019845decef2c3efc2e006d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"list",
+										"601986d1ecef2c3efc2e007f",
+										"songs",
+										"6019845decef2c3efc2e006d"
+									]
+								},
+								"description": "Agrega una canción a una lista"
+							},
+							"response": []
+						}
+					],
+					"description": "Todas las peticiones relacionadas con las canciones de una lista de reproducción"
+				}
+			],
+			"description": "Peticiones relacionadas con las listas de Reproducción"
+		}
+	]
+}
