@@ -22,8 +22,8 @@ const ListController = {
 		let listaCreada = await listRepository.create({
 			name: req.body.name,
 			description: req.body.description,
-			userId: req.body.userId,
-			songs: req.body.songs
+			// userId: req.user.id,
+			songs: []
 		});
 		res.status(201).json(listaCreada);
 	},

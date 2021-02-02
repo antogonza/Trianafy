@@ -36,6 +36,20 @@ const userRepository = {
 		const result = await theUser.save();
 		console.log(result);
 		return result;
+	},
+
+	async findByUsername(username) {
+		let user = await User.findOne({ username: username }).exec();
+		if (user != null) {
+			return user;
+		} else return undefined;
+	},
+
+	async findById(id) {
+		const result = await Usuario.findById(id).exec();
+		if (result != null) {
+			return result;
+		} else return undefined;
 	}
 };
 

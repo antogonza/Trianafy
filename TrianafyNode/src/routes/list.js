@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { ListController } from '../controllers/list';
 import { param, body } from 'express-validator';
 import { listRepository } from '../models/lists';
+import { token } from '../services/passport';
+import { validar } from '../middlewares/validacion';
 
 const router = Router();
 
@@ -11,7 +13,6 @@ router.post(
 		body('name'),
 		body('description'),
 		body('userId'),
-		body('songs'),
 		body('id')
 			.not()
 			.exists()

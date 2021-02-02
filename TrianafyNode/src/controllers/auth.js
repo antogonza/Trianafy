@@ -25,8 +25,8 @@ const AuthController = {
 	},
 
 	login: async (req, res, next) => {
-		const token = JwtService.sign(req.user);
-		await res.status(201).json({
+		const token = await JwtService.sign(req.user);
+		res.status(201).json({
 			user: req.user,
 			token: token
 		});
